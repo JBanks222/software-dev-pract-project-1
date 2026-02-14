@@ -34,3 +34,14 @@ class TaskManager:
             self.tasks.pop(0)
             self.save_tasks()
 
+    def complete_task(self, index):
+        """Mark a task as completed by appending ' [completed]' to the task string."""
+        if index < 0 or index >= len(self.tasks):
+            print("Invalid task index.")
+            return
+        if self.tasks[index].endswith(" [completed]"):
+            print("Task already completed.")
+            return
+        self.tasks[index] = f"{self.tasks[index]} [completed]"
+        self.save_tasks()
+
