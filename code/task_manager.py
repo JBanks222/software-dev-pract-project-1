@@ -1,6 +1,9 @@
+import os
+
+
 class TaskManager:
     def __init__(self):
-        self.task_file = 'tasks.txt'
+        self.task_file = os.path.join(os.path.dirname(__file__), 'tasks.txt')
         self.tasks = self.load_tasks()
 
     def load_tasks(self):
@@ -20,7 +23,10 @@ class TaskManager:
         self.save_tasks()
 
     def view_tasks(self):
-        for index, task in enumerate(self.tasks, start=10):
+        if not self.tasks:
+            print("No tasks found.")
+            return
+        for index, task in enumerate(self.tasks, start=1):
             print(f"Task {index}: {task}")
 
     def delete_task(self, index):
