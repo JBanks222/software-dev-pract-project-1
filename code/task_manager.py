@@ -26,8 +26,12 @@ class TaskManager:
         if not self.tasks:
             print("No tasks found.")
             return
+        print("════════════════════════════")
+        print("        📋 YOUR TASKS")
+        print("════════════════════════════")
         for index, task in enumerate(self.tasks, start=1):
-            print(f"Task {index}: {task}")
+            print(f"  [{index}] {task}")
+        print("════════════════════════════")
 
     def delete_task(self, index):
         if self.tasks:
