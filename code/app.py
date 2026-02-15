@@ -15,7 +15,7 @@ def main():
     elif args.view:
         manager.view_tasks()
     elif args.delete is not None:
-        manager.delete_task(args.delete - 1)  # Adjust for zero-based index
+        manager.delete_task(args.delete - 1)  # Convert to zero-based index
     else:
         parser.print_help()
 

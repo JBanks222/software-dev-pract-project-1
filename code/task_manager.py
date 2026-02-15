@@ -1,6 +1,5 @@
 import os
 
-
 class TaskManager:
     def __init__(self):
         self.task_file = os.path.join(os.path.dirname(__file__), 'tasks.txt')
@@ -21,6 +20,7 @@ class TaskManager:
     def add_task(self, task):
         self.tasks.append(task)
         self.save_tasks()
+        print(f"Added task: {task}")
 
     def view_tasks(self):
         if not self.tasks:
@@ -30,7 +30,10 @@ class TaskManager:
             print(f"Task {index}: {task}")
 
     def delete_task(self, index):
-        if self.tasks:
-            self.tasks.pop(0)
+        # FIX: Use the provided index instead of always removing the first task
+        if 0 <= index < len(self.tasks):
+            removed_task = self.tasks.pop(index)
             self.save_tasks()
-
+            print(f"Deleted task: {removed_task}")
+        else:
+            print("Invalid task index.")
