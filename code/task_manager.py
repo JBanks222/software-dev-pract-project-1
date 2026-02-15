@@ -20,7 +20,7 @@ class TaskManager:
     def add_task(self, task):
         self.tasks.append(task)
         self.save_tasks()
-        print(f"Added task: {task}")
+        print(f"Task added: {task}")
 
     def view_tasks(self):
         if not self.tasks:
@@ -29,11 +29,11 @@ class TaskManager:
         for index, task in enumerate(self.tasks, start=1):
             print(f"Task {index}: {task}")
 
+    # Student B deliberate bug (Task 5 Step 1)
     def delete_task(self, index):
-        # FIX: Use the provided index instead of always removing the first task
-        if 0 <= index < len(self.tasks):
-            removed_task = self.tasks.pop(index)
+        if self.tasks:
+            self.tasks.pop(0)  # BUG: always deletes the first task
             self.save_tasks()
-            print(f"Deleted task: {removed_task}")
+            print("⚠ Bug introduced: Deleted first task instead of selected one")
         else:
-            print("Invalid task index.")
+            print("No tasks to delete.")
